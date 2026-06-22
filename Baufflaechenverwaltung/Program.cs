@@ -3,22 +3,6 @@ using System.Collections.Generic;
 
 namespace Baufflaechenverwaltung
 {
-    public enum FlaechenStatus
-    {
-        Frei,
-        Reserviert,
-        Bebaut
-    }
-
-    public enum BauvorhabenStatus
-    {
-        AntragEingereicht,
-        Genehmigt,
-        Abgelehnt,
-        InBearbeitung,
-        Abgeschlossen
-    }
-
     public class Antragsteller
     {
         public string Name { get; set; } = string.Empty;
@@ -32,6 +16,11 @@ namespace Baufflaechenverwaltung
         public DateTime Fertigstellung { get; set; }
     }
 
+    public enum Status
+    {
+        AntragEingereicht, Genehmigt, Abgelehnt, InBearbeitung, Abgeschlossen
+    }
+
     public class GeplanteNutzung
     {
         public string Beschreibung { get; set; } = string.Empty;
@@ -43,77 +32,60 @@ namespace Baufflaechenverwaltung
         public Antragsteller Antragsteller { get; set; } = new Antragsteller();
         public GeplanteNutzung Nutzung { get; set; } = new GeplanteNutzung();
         public Zeitplan Zeitplan { get; set; } = new Zeitplan();
-        public BauvorhabenStatus Status { get; set; }
+        public Status Status { get; set; }
         public List<Bauflaeche> ZugeordneteFlaechen { get; set; } = new List<Bauflaeche>();
 
-        public void StatusAktualisieren(BauvorhabenStatus neuerStatus)
+        public void InformationenAusgeben()
         {
-            Status = neuerStatus;
+            Console.WriteLine($"--- Bauvorhaben: {Titel} ---");
+            Console.WriteLine($"Antragsteller: {Antragsteller.Name} ({Antragsteller.Firma})");
+            Console.WriteLine($"Nutzung: {Nutzung.Beschreibung}");
+            Console.WriteLine($"Zeitraum: {Zeitplan.Beginn.ToShortDateString()} bis {Zeitplan.Fertigstellung.ToShortDateString()}");
+            Console.WriteLine($"Status: {Status}");
+            Console.WriteLine($"Anzahl Flächen: {ZugeordneteFlaechen.Count}");
+            Console.WriteLine("----------------------------");
         }
     }
 
     public class Bauflaeche
     {
-        public string FlaechenId { get; set; } = string.Empty;
+        public string FlurstueckNummer { get; set; } = string.Empty;
         public double Groesse { get; set; }
         public string Lage { get; set; } = string.Empty;
         public string AktuelleNutzung { get; set; } = string.Empty;
-        public bool Bebaubarkeit { get; set; } // true = ja, false = nein
+        public string Bebaubarkeit { get; set; } = string.Empty;
         public string BPlanNummer { get; set; } = string.Empty;
         public decimal Bodenrichtwert { get; set; }
         public string Eigentuemer { get; set; } = string.Empty;
-        public FlaechenStatus Status { get; set; }
-
-        public void FlaecheReservieren()
-        {
-            if (Status == FlaechenStatus.Frei)
-            {
-                Status = FlaechenStatus.Reserviert;
-            }
-        }
-    }
-
-    public class Grundstueck
-    {
-        public string FlurstueckNummer { get; set; } = string.Empty;
-        public List<Bauflaeche> Bauflaechen { get; set; } = new List<Bauflaeche>();
+        public string Status { get; set; } = "frei"; // frei, reserviert, bebaut
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            // Demonstration der Funktionalität
-            var grundstueck = new Grundstueck { FlurstueckNummer = "0015 00012 001/002" };
-            var flaeche = new Bauflaeche
+            // Beispiel-Daten
+            var flaeche1 = new Bauflaeche 
             {
-                FlaechenId = "F1",
-                Groesse = 500.0,
-                Lage = "Nordseite",
-                AktuelleNutzung = "Brachfläche",
-                Bebaubarkeit = true,
-                BPlanNummer = "BP-2022-089",
-                Bodenrichtwert = 500m,
-                Eigentuemer = "Max Mustermann",
-                Status = FlaechenStatus.Frei
+                FlurstueckNummer = "0015 00012 001/002", 
+                Groesse = 500.0, 
+                Lage = "Leipzig-Nord", 
+                Status = "reserviert"
             };
-            grundstueck.Bauflaechen.Add(flaeche);
 
             var vorhaben = new Bauvorhaben
             {
-                Titel = "Neubau Wohnhaus",
-                Antragsteller = new Antragsteller { Name = "Erika Musterfrau", Firma = "Bau GmbH" },
+                Titel = "Neubau Wohnanlage Nord",
+                Antragsteller = new Antragsteller { Name = "Max Mustermann", Firma = "BauAG GmbH" },
                 Nutzung = new GeplanteNutzung { Beschreibung = "Wohngebäude" },
-                Zeitplan = new Zeitplan { Beginn = DateTime.Now, Fertigstellung = DateTime.Now.AddYears(1) },
-                Status = BauvorhabenStatus.AntragEingereicht
+                Zeitplan = new Zeitplan { Beginn = DateTime.Now, Fertigstellung = DateTime.Now.AddYears(2) },
+                Status = Status.InBearbeitung
             };
+            vorhaben.ZugeordneteFlaechen.Add(flaeche1);
 
-            flaeche.FlaecheReservieren();
-            vorhaben.ZugeordneteFlaechen.Add(flaeche);
-
-            Console.WriteLine($"Bauvorhaben '{vorhaben.Titel}' für Fläche {flaeche.FlaechenId} angelegt.");
-            Console.WriteLine($"Status der Fläche: {flaeche.Status}");
-            Console.WriteLine($"Status des Vorhabens: {vorhaben.Status}");
+            // Demonstration der Funktionen
+            Console.WriteLine("Bauflächenverwaltung Demonstration");
+            vorhaben.InformationenAusgeben();
         }
     }
 }
