@@ -19,26 +19,21 @@ tags: [Sommersemester2026, Softwareentwicklung, Übung06]
 
 -->
 
-[![LiaScript Course](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/Ifi-Softwareentwicklung-SoSe2026/exercise-06/refs/heads/main/README.md)
+[![LiaScript Course](https://raw.githubusercontent.com/LiaScript/LiaScript/master/badges/course.svg)](https://liascript.github.io/course/?https://raw.githubusercontent.com/Ifi-Softwareentwicklung-SoSe2026/exercise-06-saltyyaf1/refs/heads/main/README.md)
 
 # Aufgabe 06
 
-Softwareentwicklung SoSe2026
-============================
+# Softwareentwicklung SoSe2026
 
 ## GitHub Issues – Kurzanleitung
 
-Kategorisierung
-====================
+# Kategorisierung
 
 Issues können in GitHub durch Labels und Typen kategorisiert werden, um sie thematisch und nach Art zu ordnen.
 
-
 ![Die rechte Seite des Bildschirms zur Erstellung eines Issues mit allen Optionen für Kategorisierung und Priorisierung.](img/Github_GUI_Overview.png "Die rechte Seite des Bildschirms zur Erstellung eines Issues mit allen Optionen für Kategorisierung und Priorisierung.")<!-- style="height: 10cm;" -->
 
-
-Labels
---------------------
+## Labels
 
 Labels ordnen Issues thematisch zu und erleichtern das Filtern und Sortieren.
 
@@ -63,14 +58,11 @@ Labels ordnen Issues thematisch zu und erleichtern das Filtern und Sortieren.
   - `invalid` – Issues, die ungültig oder nicht relevant sind.
   - `wontfix` – Issues, die bewusst nicht behoben werden.
 
-
 ![Labeloptionen in GitHub.](img/Github_GUI_Labels.png"Labeloptionen in GitHub.")<!-- style="height: 8cm;" -->
 
-Typen
---------------------
+## Typen
 
 Typen definieren die Art des Issues und passen die verfügbaren Felder an. Sie helfen, Issues nach ihrem Zweck zu klassifizieren.
-
 
 ![Ausgewählte Typ-Optionen](img/Github_GUI_Type.png "Ausgewählte Typ-Optionen")<!-- style="height: 8cm;" -->
 
@@ -78,11 +70,9 @@ Typen definieren die Art des Issues und passen die verfügbaren Felder an. Sie h
 - **Feature** – Bezeichnet eine neue Funktion oder Verbesserung.
 - **Task** – Beschreibt eine allgemeine Aufgabe, die erledigt werden muss.
 
-Priorisierung
---------------------
+## Priorisierung
 
 Jeder Typ ermöglicht die Festlegung einer Priorität, um die Wichtigkeit und Dringlichkeit des Issues anzuzeigen.
-
 
 ![Angezeigte Prioritätsoptionen](img/Github_GUI_Fields_Prio.png "Angezeigte Prioritätsoptionen")<!-- style="height: 8cm;" -->
 
@@ -101,15 +91,13 @@ Als Bauamtsmitarbeiter möchte ich eine digitale Plattform zur Verwaltung von Ba
 
 ### **Akzeptanzkriterien**
 
-1. **Grundlegende Flächenverwaltung**
-====================
+1. # **Grundlegende Flächenverwaltung**
 
 - Das System muss Grundstücke und Bauflächen verwalten können (Flurstücknummer („0015 00012 001/002“ (Flur 0015, Flurstück 00012, Teilfläche 001/002)), Größe, Lage, aktuelle Nutzung (Gewerbe, Landwirtschaft, Forst, Wohnnutzung, Brachfläche, ...), Bebaubarkeit (ja, nein, auflagen). Ein Grundstück kann mehrere Bauflächen enthalten.
 - Jede Fläche muss mit Metadaten wie B-Plan-Nummer ("BP-2022-089 – Wohngebiet Leipzig-Nord"), Bodenrichtwert ($500 €/m^2$) und Eigentümer verknüpft sein.
 - Flächen müssen als `frei`, `reserviert` oder `bebaut` markiert werden können.
 
-2. **Bauvorhaben verwalten**
-====================
+2. # **Bauvorhaben verwalten**
 
 - Das System muss Bauvorhaben anlegen und verknüpfen können mit:
   - Antragsteller (Name, Kontaktdaten, Firma)
@@ -191,6 +179,7 @@ Falls im Verlauf der Jürgen-Issues ein UML-Klassendiagramm gefordert wird, erg�
 
 @enduml
 ```
+
 @plantUML.eval(png)
 
 ## Aufgabenmaterial
