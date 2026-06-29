@@ -47,6 +47,16 @@ namespace Baufflaechenverwaltung
         }
     }
 
+    public class Grundstueck
+    {
+        public string FlurstueckNummer { get; set; } = string.Empty;
+        public double Groesse { get; set; }
+        public string Lage { get; set; } = string.Empty;
+        public string AktuelleNutzung { get; set; } = string.Empty;
+        public string Bebaubarkeit { get; set; } = string.Empty;
+        public List<Bauflaeche> Bauflaechen { get; set; } = new List<Bauflaeche>();
+    }
+
     public class Bauflaeche
     {
         public string FlurstueckNummer { get; set; } = string.Empty;
