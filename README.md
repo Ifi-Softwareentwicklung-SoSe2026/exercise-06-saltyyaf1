@@ -184,28 +184,25 @@ class Grundstueck {
     + String lage
     + String aktuelleNutzung
     + String bebaubarkeit
-    --
-    + List<Bauflaeche> getBauflaechen()
 }
 
 class Bauflaeche {
+    + String flurstueckNummer
+    + double groesse
+    + String lage
+    + String aktuelleNutzung
+    + String bebaubarkeit
     + String bPlanNummer
     + decimal bodenrichtwert
     + String eigentuemer
     + String status
-    --
-    + void FlaecheReservieren()
-    + void StatusAktualisieren(String neuerStatus)
 }
 
 class Bauvorhaben {
     + String titel
-    + GeplanteNutzung nutzung
-    + Zeitplan zeitplan
     + Status status
     --
-    + void BauvorhabenAnlegen()
-    + void StatusAktualisieren(Status neuerStatus)
+    + void InformationenAusgeben()
 }
 
 class Antragsteller {
